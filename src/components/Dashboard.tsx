@@ -6,17 +6,9 @@ import { Badge } from '@/components/ui/badge';
 import { CalendarIcon, HomeIcon, UsersIcon, TrendingUpIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
-import { Toaster } from 'react-hot-toast';
-import { initializeSampleData } from '@/data/sampleBookings';
-
 export const Dashboard = () => {
   const { bookings, loading } = useBookings();
   const [refreshKey, setRefreshKey] = useState(0);
-
-  // Initialize sample data on first load
-  useEffect(() => {
-    initializeSampleData();
-  }, []);
 
   // Force refresh when bookings change
   const handleBookingUpdate = () => {
@@ -151,17 +143,6 @@ export const Dashboard = () => {
         />
       </div>
 
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 4000,
-          style: {
-            background: 'hsl(var(--card))',
-            color: 'hsl(var(--card-foreground))',
-            border: '1px solid hsl(var(--border))',
-          },
-        }}
-      />
     </div>
   );
 };

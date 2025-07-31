@@ -42,7 +42,7 @@ export const Calendar = ({ bookings, onBookingUpdate }: CalendarProps) => {
   const goToNextWeek = () => setCurrentDate(addDays(currentDate, 7));
   const goToToday = () => setCurrentDate(new Date());
 
-  // Get bookings for a specific day and apartment
+  // Get bookings for a specific day and apartment (including all statuses except cancelled)
   const getBookingForDayAndApartment = (date: Date, apartmentId: string) => {
     return bookings.find(booking => {
       const start = new Date(booking.startDate);
@@ -50,7 +50,7 @@ export const Calendar = ({ bookings, onBookingUpdate }: CalendarProps) => {
       return booking.apartmentId === apartmentId && 
              date >= start && 
              date < end &&
-             booking.status !== 'cancelled';
+             booking.status !== 'cancelled'; // Show confirmed and pending bookings
     });
   };
 

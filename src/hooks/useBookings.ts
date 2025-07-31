@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Booking, BookingFormData } from '@/types/booking';
-import { toast } from 'react-hot-toast';
+import { toast } from 'sonner';
 
 const STORAGE_KEY = 'booking-calendar-data';
 
