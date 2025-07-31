@@ -278,18 +278,17 @@ export const Calendar = ({ bookings, onBookingUpdate }: CalendarProps) => {
                   >
                     {booking && (
                       <div
-                        className={`absolute inset-1 rounded p-2 text-xs overflow-hidden ${
-                          booking.status === 'confirmed' ? 'booking-item reserved' :
-                          booking.status === 'pending' ? 'booking-item pending' :
-                          'booking-item bg-muted text-muted-foreground'
-                        }`}
+                        className="absolute inset-1 rounded p-2 text-xs overflow-hidden text-white font-medium shadow-sm cursor-grab active:cursor-grabbing"
                         style={{
-                          backgroundColor: booking.status === 'confirmed' ? getApartmentColor(booking.apartmentId) : undefined
+                          backgroundColor: getApartmentColor(booking.apartmentId),
+                          opacity: booking.status === 'confirmed' ? 1 : 0.7
                         }}
                         onMouseDown={(e) => handleMouseDown(e, booking)}
                       >
-                        <div className="font-medium truncate">{booking.guestName}</div>
-                        <div className="opacity-80 truncate">{booking.status}</div>
+                        <div className="truncate">{booking.guestName}</div>
+                        <div className="text-xs opacity-90 truncate">
+                          {booking.status === 'confirmed' ? 'Confirmé' : 'En attente'}
+                        </div>
                       </div>
                     )}
                   </div>
